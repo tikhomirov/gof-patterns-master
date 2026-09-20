@@ -1,0 +1,24 @@
+{
+  "name": "gof-patterns-master",
+  "version": "1.0.0",
+  "description": "GoF Patterns skills for AI coding agents",
+  "type": "module",
+  "bin": {
+    "gof-patterns-install": "./bin/install.mjs"
+  },
+  "scripts": {
+    "install:global": "node ./bin/install.mjs install --global --yes",
+    "install:local": "node ./bin/install.mjs install --yes"
+  },
+  "keywords": [
+    "ai-agents",
+    "agent-skills",
+    "claude-code",
+    "pi",
+    "opencode",
+    "gof",
+    "design-patterns"
+  ],
+  "author": "Antigravity",
+  "license": "MIT"
+}

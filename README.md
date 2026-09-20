@@ -41,10 +41,22 @@ npx github:tikhomirov/gof-patterns-master install
 
 When you run it globally, it installs into `~/.agents/skills`, `~/.claude/skills`, and `~/.pi/skills`.
 
-### Available modes
-- *"Run gof-patterns to analyze this file."*
-- *"Refactor this conditional logic using gof-patterns Strategy."*
-- *"Generate an Abstract Factory pattern boilerplate in Python using gof-patterns."*
+## Skills
+
+Skills are activated when you mention them in conversation with the agent or call them directly via `/skill_name`.
+
+For example:
+- `/gof-patterns analyze this file for code smells.`
+- `/gof-patterns generate a Command pattern in PHP.`
+- `Please refactor this conditional hell using gof-patterns Strategy.`
+
+## How it works
+
+When the agent triggers `gof-patterns`, it will:
+1. Examine what `action` you requested (analyze, generate, or refactor).
+2. Look up the specific pattern category (`creational.md`, `structural.md`, or `behavioral.md`).
+3. Follow the strict definitions specified in the GoF Knowledge Base.
+4. Construct or modify your code based on Object-Oriented principles.
 
 ---
 
@@ -67,8 +79,19 @@ npx github:tikhomirov/gof-patterns-master install
 
 При глобальной установке скиллы будут развернуты в `~/.agents/skills`, `~/.claude/skills` и `~/.pi/skills` и станут доступны во всех ваших проектах.
 
-### Использование
-Вызывайте, упоминая скилл в запросе к агенту:
-- *"Проанализируй этот класс с помощью gof-patterns."*
-- *"Сделай рефакторинг с применением паттерна Стратегия (gof-patterns)."*
-- *"Напиши каркас Абстрактной Фабрики на TypeScript (используй gof-patterns)."*
+## Skills
+
+Скиллы активируются, когда вы упоминаете их в разговоре с ИИ или вызываете явно `/имя_скилла` (в режиме командной строки агента).
+
+Например:
+- `/gof-patterns проанализируй этот класс`
+- `/gof-patterns создай интерфейсы для паттерна Наблюдатель`
+- `Сделай рефакторинг этого метода с применением gof-patterns (Фабрика).`
+
+## Как это работает
+
+При упоминании `gof-patterns` агент:
+1. Определяет тип вашей задачи: Анализ (Detection), Генерация (Generation) или Рефакторинг (Refactoring).
+2. Читает `knowledge-base.md` скилла, чтобы найти соответствующую группу паттернов.
+3. Открывает файл с эталонными ролями (`patterns/creational.md`, `structural.md` или `behavioral.md`).
+4. Применяет принципы проектирования к вашему коду, гарантируя инкапсуляцию, правильную иерархию и низкую связность.

@@ -1,38 +1,74 @@
-# GoF Patterns Master
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Design_patterns_Elements_of_Reusable_Object-Oriented_Software_book_cover.jpg/220px-Design_patterns_Elements_of_Reusable_Object-Oriented_Software_book_cover.jpg" width="120" alt="Gang of Four Book Cover" />
+</p>
 
-A composite skill for AI coding agents to detect, generate, and refactor code using Gang of Four (GoF) Object-Oriented Design Patterns.
+<h1 align="center">GoF Patterns Agent Skills</h1>
 
-## Installation
+<p align="center">
+  A composite skill package for AI coding agents to apply Gang of Four (GoF) Design Patterns.
+</p>
 
-This skill provides an installer modeled after `dandy-code-skills`.
+<p align="center">
+  <a href="https://github.com/tikhomirov/gof-patterns-master/releases"><img alt="GitHub Release" src="https://img.shields.io/github/v/release/tikhomirov/gof-patterns-master?style=flat-square"></a>
+  <a href="https://github.com/tikhomirov/gof-patterns-master/blob/main/package.json"><img alt="Node" src="https://img.shields.io/badge/node-%3E%3D18-339933?style=flat-square&logo=node.js&logoColor=white"></a>
+  <a href="https://github.com/tikhomirov/gof-patterns-master/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/badge/license-MIT-blue?style=flat-square"></a>
+  <img alt="Agents" src="https://img.shields.io/badge/agents-Claude%20Code%20%7C%20OpenCode%20%7C%20Pi-purple?style=flat-square">
+</p>
 
-### Global Installation
+<p align="center">
+  <a href="https://en.wikipedia.org/wiki/Design_Patterns">Design Patterns (Wikipedia)</a> ·
+  <a href="https://github.com/tikhomirov/gof-patterns-master/releases">Releases</a>
+</p>
 
-To install globally to `~/.agents` and `~/.claude` (and `~/.pi`):
+---
+
+## English
+
+GoF Patterns Agent Skills is a skill package for AI coding agents.
+
+It turns your agent into a Senior Software Architect capable of performing:
+- **Detection**: Analyzes code to find coupling problems and suggests 1-3 suitable patterns.
+- **Generation**: Scaffolds exact GoF structures (Creational, Structural, Behavioral) with strict component roles.
+- **Refactoring**: Isolates interfaces, resolves class responsibilities, and modifies your code to follow strict Object-Oriented principles.
+
+### Install
+
+Run the interactive installer via npx:
 
 ```bash
-npm install -g gof-patterns-master
-gof-patterns-install install --global
+npx github:tikhomirov/gof-patterns-master install
 ```
 
-### Local Installation
+When you run it globally, it installs into `~/.agents/skills`, `~/.claude/skills`, and `~/.pi/skills`.
 
-To install into the current workspace directory (`./.agents` etc.):
+### Available modes
+- *"Run gof-patterns to analyze this file."*
+- *"Refactor this conditional logic using gof-patterns Strategy."*
+- *"Generate an Abstract Factory pattern boilerplate in Python using gof-patterns."*
+
+---
+
+## Русский
+
+GoF Patterns Agent Skills — это набор навыков для AI-агентов.
+
+Скилл превращает вашего агента в Senior Software Architect, предоставляя возможности:
+- **Анализ**: Ищет в предоставленном коде "запахи" (проблемы связности) и предлагает подходящие паттерны проектирования.
+- **Генерация**: Генерирует каркасы всех 23 паттернов (Порождающие, Структурные, Поведенческие), соблюдая все классические роли.
+- **Рефакторинг**: Переписывает ваш код с учетом строгих принципов проектирования ("Программируйте на уровне интерфейсов", "Композиция вместо наследования"). 
+
+### Установка
+
+Запустите установщик через npx:
 
 ```bash
-npx gof-patterns-master install
+npx github:tikhomirov/gof-patterns-master install
 ```
 
-## Features
+При глобальной установке скиллы будут развернуты в `~/.agents/skills`, `~/.claude/skills` и `~/.pi/skills` и станут доступны во всех ваших проектах.
 
-- **Detection**: Analyzes source code to identify code smells where GoF patterns apply.
-- **Generation**: Scaffolds boilerplate pattern code using the correct Roles (e.g. `AbstractFactory`, `Product`).
-- **Refactoring**: Safely refactors user-provided code logically splitting it across required abstract constraints and composite interfaces.
-
-## Usage in Prompt
-
-Just ask your AI agent:
-
-- _"Run gof-patterns to analyze this component."_
-- _"Refactor this conditional hell using gof-patterns Strategy."_
-- _"Generate an Abstract Factory pattern boilerplate in TypeScript using gof-patterns."_
+### Использование
+Вызывайте, упоминая скилл в запросе к агенту:
+- *"Проанализируй этот класс с помощью gof-patterns."*
+- *"Сделай рефакторинг с применением паттерна Стратегия (gof-patterns)."*
+- *"Напиши каркас Абстрактной Фабрики на TypeScript (используй gof-patterns)."*

@@ -7,8 +7,8 @@
     "gof-patterns-install": "./bin/install.mjs"
   },
   "scripts": {
-    "install:global": "node ./bin/install.mjs install --global --yes",
-    "install:local": "node ./bin/install.mjs install --yes"
+    "install:global": "./skill.sh --global",
+    "install:local": "./skill.sh"
   },
   "keywords": [
     "ai-agents",

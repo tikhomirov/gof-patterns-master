@@ -43,20 +43,26 @@ When you run it globally, it installs into `~/.agents/skills`, `~/.claude/skills
 
 ## Skills
 
-Skills are activated when you mention them in conversation with the agent or call them directly via `/skill_name`.
+| Skill | Use when |
+|---|---|
+| `gof-review` | You want to check code/file for architectural smells and find a matching GoF pattern. |
+| `gof-refactor` | You already have a mess and want the agent to strictly rewrite it using a designated pattern. |
+| `gof-generator` | You strictly need a boilerplate GoF scaffolding from scratch. |
 
 For example:
-- `/gof-patterns analyze this file for code smells.`
-- `/gof-patterns generate a Command pattern in PHP.`
-- `Please refactor this conditional hell using gof-patterns Strategy.`
+- `/gof-review`
+- `/gof-refactor Please rewrite this using the Strategy Pattern.`
+- `/gof-generator Abstract Factory in TypeScript`
 
 ## How it works
 
-When the agent triggers `gof-patterns`, it will:
-1. Examine what `action` you requested (analyze, generate, or refactor).
-2. Look up the specific pattern category (`creational.md`, `structural.md`, or `behavioral.md`).
-3. Follow the strict definitions specified in the GoF Knowledge Base.
-4. Construct or modify your code based on Object-Oriented principles.
+The package relies on lazy-loading, similar to Dandy Code.
+Agents load the files in exactly this order:
+1. The triggered `SKILL.md` (e.g. `gof-review/SKILL.md`).
+2. `gof-base/pattern-map.md` to map the detected smell or user request to a category.
+3. The specific detailed recipe (e.g. `gof-base/patterns/behavioral.md`).
+
+This prevents the agent from hallucinating properties of patterns and breaking context limitations.
 
 ---
 
@@ -81,17 +87,22 @@ npx github:tikhomirov/gof-patterns-master install
 
 ## Skills
 
-Скиллы активируются, когда вы упоминаете их в разговоре с ИИ или вызываете явно `/имя_скилла` (в режиме командной строки агента).
+| Skill | Когда использовать |
+|---|---|
+| `gof-review` | Вы хотите проанализировать файл/код на наличие «запахов» и подобрать паттерн. |
+| `gof-refactor` | У вас есть монолитный метод/класс и нужно переписать его с применением конкретного паттерна. |
+| `gof-generator` | Нужно сгенерировать готовый каркас (boilerplate) для любого паттерна. |
 
-Например:
-- `/gof-patterns проанализируй этот класс`
-- `/gof-patterns создай интерфейсы для паттерна Наблюдатель`
-- `Сделай рефакторинг этого метода с применением gof-patterns (Фабрика).`
+Примеры вызова:
+- `/gof-review`
+- `/gof-refactor Перепиши этот метод через паттерн Стратегия.`
+- `/gof-generator Абстрактная Фабрика на Go`
 
 ## Как это работает
 
-При упоминании `gof-patterns` агент:
-1. Определяет тип вашей задачи: Анализ (Detection), Генерация (Generation) или Рефакторинг (Refactoring).
-2. Читает `knowledge-base.md` скилла, чтобы найти соответствующую группу паттернов.
-3. Открывает файл с эталонными ролями (`patterns/creational.md`, `structural.md` или `behavioral.md`).
-4. Применяет принципы проектирования к вашему коду, гарантируя инкапсуляцию, правильную иерархию и низкую связность.
+Система использует «ленивую загрузку» (lazy-loading) инструкций, чтобы не перегружать контекст:
+1. Агент читает выбранный `SKILL.md` (например, `gof-refactor`).
+2. Затем подгружает «карту паттернов» `gof-base/pattern-map.md`.
+3. Загружает только нужную часть базы знаний (например, `gof-base/patterns/behavioral.md`).
+
+Такая маршрутизация гарантирует, что агент не будет выдумывать (галлюцинировать) детали паттернов из старой памяти, а использует эталонные правила ООП.

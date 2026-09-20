@@ -36,7 +36,10 @@ const TARGETS = {
 };
 
 const SKILL_ENTRIES = [
-  'gof-patterns',
+  'gof-review',
+  'gof-refactor',
+  'gof-generator',
+  'gof-base'
 ];
 
 try {

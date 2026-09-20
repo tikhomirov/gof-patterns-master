@@ -3,7 +3,7 @@
 set -e
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-SKILL_SRC="$REPO_ROOT/.agents/skills/gof-patterns"
+SKILL_SRC="$REPO_ROOT/.agents/skills"
 
 if [ ! -d "$SKILL_SRC" ]; then
     echo "Error: Skill source not found at $SKILL_SRC"
@@ -15,17 +15,18 @@ install_target() {
     local TYPE="$2"
     
     mkdir -p "$DEST"
-    local TARGET_PATH="$DEST/gof-patterns"
     
-    rm -rf "$TARGET_PATH"
-    
-    if [ "$TYPE" = "copy" ]; then
-        cp -r "$SKILL_SRC" "$TARGET_PATH"
-        echo "✔ Copied skill to $DEST"
-    else
-        ln -s "$SKILL_SRC" "$TARGET_PATH"
-        echo "✔ Symlinked skill to $DEST"
-    fi
+    for SKILL in gof-review gof-refactor gof-generator gof-base; do
+        local TARGET_PATH="$DEST/$SKILL"
+        rm -rf "$TARGET_PATH"
+        
+        if [ "$TYPE" = "copy" ]; then
+            cp -r "$SKILL_SRC/$SKILL" "$TARGET_PATH"
+        else
+            ln -s "$SKILL_SRC/$SKILL" "$TARGET_PATH"
+        fi
+    done
+    echo "✔ Installed skills to $DEST via $TYPE"
 }
 
 echo "Installing GoF Patterns Master skill..."
